@@ -1,3 +1,4 @@
+using Assignment8.Data;
 
 namespace Assignment8
 {
@@ -13,6 +14,8 @@ namespace Assignment8
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddSingleton<MongoDbAccess>();
 
             var app = builder.Build();
 
