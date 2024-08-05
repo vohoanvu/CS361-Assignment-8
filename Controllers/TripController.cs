@@ -6,29 +6,13 @@ namespace Assignment8.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class MongoDbController : ControllerBase
+    public class TripController : ControllerBase
     {
-        private readonly MongoDbAccess _mongoDbAccess;
         private readonly PdfGeneratorService _pdfGeneratorService;
 
-        public MongoDbController(MongoDbAccess mongoDbAccess, PdfGeneratorService pdfGeneratorService)
+        public TripController(PdfGeneratorService pdfGeneratorService)
         {
-            _mongoDbAccess = mongoDbAccess;
             _pdfGeneratorService = pdfGeneratorService;
-        }
-
-        [HttpGet("test-connection")]
-        public IActionResult TestConnection()
-        {
-            bool isConnected = _mongoDbAccess.TestConnection();
-            if (isConnected)
-            {
-                return Ok("Successfully connected to MongoDB!");
-            }
-            else
-            {
-                return StatusCode(500, "Failed to connect to MongoDB.");
-            }
         }
 
         [HttpPost("export-itinerary")]
