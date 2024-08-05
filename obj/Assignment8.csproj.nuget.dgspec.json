@@ -46,9 +46,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "DinkToPdf": {
+            "Markdig": {
               "target": "Package",
-              "version": "[1.0.8, )"
+              "version": "[0.37.0, )"
             },
             "MongoDB.Driver": {
               "target": "Package",
