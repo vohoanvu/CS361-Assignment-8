@@ -1,4 +1,7 @@
 using Assignment8.Data;
+using Assignment8.Services;
+using DinkToPdf.Contracts;
+using DinkToPdf;
 
 namespace Assignment8
 {
@@ -16,6 +19,9 @@ namespace Assignment8
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddSingleton<MongoDbAccess>();
+
+            builder.Services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
+            builder.Services.AddTransient<PdfGeneratorService>();
 
             var app = builder.Build();
 
