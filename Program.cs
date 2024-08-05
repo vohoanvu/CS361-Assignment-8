@@ -1,7 +1,7 @@
 using Assignment8.Data;
 using Assignment8.Services;
-using DinkToPdf.Contracts;
-using DinkToPdf;
+using QuestPDF;
+using QuestPDF.Infrastructure;
 
 namespace Assignment8
 {
@@ -20,8 +20,10 @@ namespace Assignment8
 
             builder.Services.AddSingleton<MongoDbAccess>();
 
-            builder.Services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
+            //builder.Services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
             builder.Services.AddTransient<PdfGeneratorService>();
+
+            QuestPDF.Settings.License = LicenseType.Community;
 
             var app = builder.Build();
 
