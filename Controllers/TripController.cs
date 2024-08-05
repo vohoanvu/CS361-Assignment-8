@@ -34,18 +34,22 @@ namespace Assignment8.Controllers
         [HttpPost("export-itinerary")]
         public IActionResult ExportItinerary([FromBody] TripPayload trip)
         {
-            if (trip == null || string.IsNullOrEmpty(trip.Itinerary))
+            if (!ModelState.IsValid)
             {
-                return BadRequest("Invalid trip data.");
+                // Gather all validation errors
+                var errors = ModelState.Values
+                    .SelectMany(v => v.Errors)
+                    .Select(e => e.ErrorMessage)
+                    .ToList();
+
+                return BadRequest(new { Message = "Validation failed.", Errors = errors });
             }
 
             try
             {
-                // Generate PDF from the itinerary markdown
                 var pdfBytes = _pdfGeneratorService.GeneratePdfFromMarkdown(trip.Itinerary);
 
-                // Return the PDF file
-                return File(pdfBytes, "application/pdf", $"Itinerary_{trip.Id}.pdf");
+                return File(pdfBytes, "application/pdf", $"Itinerary_{trip.Id ?? "null_id"}.pdf");
             }
             catch (Exception ex)
             {

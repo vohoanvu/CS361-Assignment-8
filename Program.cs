@@ -19,8 +19,6 @@ namespace Assignment8
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddSingleton<MongoDbAccess>();
-
-            //builder.Services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
             builder.Services.AddTransient<PdfGeneratorService>();
 
             QuestPDF.Settings.License = LicenseType.Community;
