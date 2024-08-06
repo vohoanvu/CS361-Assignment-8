@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Assignment8")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d2db81b202902ee4fedd3017114e8e2a265d667c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cdacd0476e6384e240e57f71181de6660bf40202")]
 [assembly: System.Reflection.AssemblyProductAttribute("Assignment8")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Assignment8")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
