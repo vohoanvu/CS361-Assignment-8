@@ -9,3 +9,4 @@
 /bin/Release/net8.0
 /obj/Debug/net8.0
 /obj/Release/net8.0
+/obj/project.nuget.cache
