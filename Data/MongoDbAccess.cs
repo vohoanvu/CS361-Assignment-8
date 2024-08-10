@@ -24,6 +24,16 @@ namespace Assignment8.Data
             _client = new MongoClient(settings);
         }
 
+        public IMongoDatabase GetDatabase(string databaseName)
+        {
+            if (string.IsNullOrEmpty(databaseName))
+            {
+                throw new ArgumentException("Database name cannot be null or empty.", nameof(databaseName));
+            }
+
+            return _client.GetDatabase(databaseName);
+        }
+
         public bool TestConnection()
         {
             try
