@@ -21,6 +21,15 @@ namespace Assignment8
             builder.Services.AddSingleton<TripRepository>();
             builder.Services.AddTransient<PdfGeneratorService>();
 
+            // Add CORS
+            builder.Services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(corsBuilder =>
+                        corsBuilder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+                    options.AddPolicy("AllowAll",
+                        corsBuilder => corsBuilder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
+
             QuestPDF.Settings.License = LicenseType.Community;
 
             var app = builder.Build();
@@ -42,6 +51,8 @@ namespace Assignment8
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
+
+            app.UseCors("AllowAll");
 
 
             app.MapControllers();
